@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% load static%}
+<html>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="{% static 'js\main.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+
+
+</head>
+
+<body>
+  <!-- As a heading -->
+  <div class="container">
+    <nav class="navbar navbar-light bg-light headingnav">
+      <div class="container-fluid">
+        <div class="row mx-auto">
+          <span class="navbar-brand mb-12 h1 ">Nested choices Task</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- .......................................................Form......................................................................................... -->
+    <div class='container text-center formdiv'>
+      <form name="form1" id="form1" action="#">
+        <label>
+          <!-- {% csrf_token %} -->
+          <h6>Country:</h6><select class="form-select" name="country" id="country">
+            <option value="" selected="selected">Select country</option>
+            {% for c in country %}
+            <option value="{{c.id}}">{{c.name}}</option>
+            {% endfor %}
+          </select>
+        </label>
+        <br><br><br>
+        <label>
+          <h6>State:</h6>
+
+          <select class="form-select" name="state" id="state">
+            <option value="" selected="selected">Please select country first</option>
+        </label>
+        </select>
+        <br><br>
+        <label>
+          <h6>City:</h6>
+
+          <select class="form-select" name="city" id="city">
+            <option value="" selected="selected">Please select state first</option>
+          </select>
+        </label>
+        <br><br>
+        <!-- <button type="submit" id="submit" class="btn btn-outline-primary">Submit</button> -->
+        <input type="submit" value="Submit" id="submit" class="btn btn-outline-primary">  
+      </form>
+    </div>
+    <!-- <pre id="demo"></pre> -->
+    <!-- ..................................................................Butttom div.............................................................................. -->
+    <div class="display">
+      <h6>Country : <span id="displayCountry"></span></h6>
+      <br />
+      <h6>State : <span id="displayState"></span></h6>
+      <br />
+      <h6>City : <span id="displayCity"></span></h6>
+    </div>
+  </div>
+</body>
+
+</html>
